@@ -4,7 +4,7 @@ Save-the-date landing page for Rita & Carlo's wedding (12 settembre 2026, Padova
 
 Structure:
 - `src/layouts/Layout.astro` — global `<head>`, font loading, and design tokens (colors, `--font-display`/`--font-body`) as CSS custom properties on `:root`
-- `src/components/` — `Hero.astro`, `PhotoStrip.astro` (reused 3x), `EventStep.astro` (reused for "La Santa Messa" and "La Festa" via a `variant` prop), `Gifts.astro`, `Footer.astro`
+- `src/components/` — `Hero.astro`, `PhotoStrip.astro` (reused 3x), `EventStep.astro` (reused for "La Santa Messa" and "La Festa" via a `variant` prop; photo sits beside the details card, side by side — `photoPosition` prop, `"left"` for La Messa, `"right"` for La Festa, stacking below 640px), `Gifts.astro`, `Footer.astro`
 - `src/pages/index.astro` — assembles all sections in order
 - `src/fonts/PontiffWide.otf` — the display font, self-hosted (paid/licensed font, not on Google Fonts); Poppins is loaded from Google Fonts in `Layout.astro`
 - `src/img/` — real couple/venue photos; only 2 couple photos exist today, reused across 5 photo-strip slots — swap in more if provided

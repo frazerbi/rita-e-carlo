@@ -19,6 +19,7 @@ interface Props {
 	photo: ImageMetadata;
 	photoAlt: string;
 	variant: 'messa' | 'festa';
+	photoPosition?: 'left' | 'right';
 	decorImages?: DecorImage[];
 }
 
@@ -35,11 +36,12 @@ const {
 	photo,
 	photoAlt,
 	variant,
+	photoPosition = 'left',
 	decorImages = [],
 } = Astro.props;
 ---
 
-<section class="event" data-variant={variant} id={id}>
+<section class="event" data-variant={variant} data-photo-position={photoPosition} id={id}>
 	{decorImages.map((d) => <img class={`decor decor-${d.position}`} src={d.src.src} alt="" aria-hidden="true" />)}
 
 	<div class="connector">
@@ -156,11 +158,15 @@ const {
 
 	.content {
 		display: flex;
-		flex-wrap: wrap;
 		align-items: center;
 		justify-content: center;
+		align-self: stretch;
 		gap: clamp(20px, 3vw, 32px);
 		padding-top: 8px;
+	}
+
+	.event[data-photo-position='right'] .content {
+		flex-direction: row-reverse;
 	}
 
 	.photo {
@@ -182,7 +188,8 @@ const {
 		flex-direction: column;
 		align-items: center;
 		gap: 8px;
-		width: min(560px, 100%);
+		flex: 1 1 320px;
+		max-width: 560px;
 		padding: 32px 40px;
 		border-radius: 24px;
 	}
@@ -280,6 +287,11 @@ const {
 	@media (max-width: 640px) {
 		.decor {
 			display: none;
+		}
+
+		.content,
+		.event[data-photo-position='right'] .content {
+			flex-direction: column;
 		}
 	}
 </style>
