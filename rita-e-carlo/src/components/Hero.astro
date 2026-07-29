@@ -1,0 +1,116 @@
+---
+import ficoTl from '../assets/decor/fico-tl.svg';
+import foglieBr from '../assets/decor/foglie-br.svg';
+---
+
+<section class="hero">
+	<img class="decor decor-tl" src={ficoTl.src} alt="" aria-hidden="true" />
+	<img class="decor decor-br" src={foglieBr.src} alt="" aria-hidden="true" />
+
+	<span class="badge">12 SETTEMBRE 2026</span>
+	<h1>Rita &amp; Carlo</h1>
+	<p class="subtitle">
+		Vi invitiamo a vivere insieme a noi il giorno più importante della nostra vita.
+	</p>
+	<a class="scroll-hint" href="#programma">
+		<span class="scroll-label">SCOPRI IL PROGRAMMA</span>
+		<span class="scroll-arrow" aria-hidden="true">↓</span>
+	</a>
+</section>
+
+<style>
+	.hero {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: clamp(16px, 2.5vw, 28px);
+		background: var(--color-purple);
+		overflow: clip;
+		padding: clamp(120px, 16vw, 180px) clamp(24px, 6vw, 80px) clamp(90px, 12vw, 140px);
+		text-align: center;
+	}
+
+	.badge {
+		background: var(--color-orange);
+		color: var(--color-cream);
+		font-family: var(--font-body);
+		font-weight: 600;
+		font-size: 15px;
+		letter-spacing: 2px;
+		padding: 10px 24px;
+		border-radius: 999px;
+	}
+
+	h1 {
+		margin: 0;
+		font-family: var(--font-display);
+		font-weight: 400;
+		color: var(--color-cream);
+		font-size: clamp(48px, 8vw, 96px);
+		letter-spacing: 1px;
+		max-width: 20ch;
+	}
+
+	.subtitle {
+		margin: 0;
+		font-family: var(--font-body);
+		color: var(--color-cream);
+		font-size: clamp(17px, 2vw, 22px);
+		max-width: 40ch;
+	}
+
+	.scroll-hint {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 6px;
+		padding-top: 40px;
+		color: var(--color-peach);
+		text-decoration: none;
+	}
+
+	.scroll-label {
+		font-family: var(--font-body);
+		font-weight: 500;
+		font-size: 13px;
+		letter-spacing: 2px;
+	}
+
+	.scroll-arrow {
+		font-size: 20px;
+	}
+
+	.decor {
+		position: absolute;
+		pointer-events: none;
+		opacity: 0.9;
+	}
+
+	.decor-tl {
+		top: -60px;
+		left: -70px;
+		width: clamp(140px, 16vw, 220px);
+	}
+
+	.decor-br {
+		bottom: -10px;
+		right: -10px;
+		width: clamp(110px, 12vw, 160px);
+	}
+
+	@media (max-width: 640px) {
+		.decor {
+			opacity: 0.6;
+		}
+		.decor-tl {
+			width: 110px;
+			top: -40px;
+			left: -50px;
+		}
+		.decor-br {
+			width: 90px;
+		}
+	}
+</style>

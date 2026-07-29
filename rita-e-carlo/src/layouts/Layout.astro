@@ -1,23 +1,79 @@
+---
+import pontiffWideUrl from '../fonts/PontiffWide.otf?url';
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const {
+	title = 'Rita & Carlo — 12 Settembre 2026',
+	description = 'Vi invitiamo a vivere insieme a noi il giorno più importante della nostra vita. Save the date: 12 settembre 2026, Padova.',
+} = Astro.props;
+---
+
 <!doctype html>
-<html lang="en">
+<html lang="it">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<meta name="description" content={description} />
+		<title>{title}</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+			rel="stylesheet"
+		/>
+		<style define:vars={{ pontiffWideUrl: `url(${pontiffWideUrl})` }}>
+			@font-face {
+				font-family: 'Pontiff Wide';
+				src: var(--pontiffWideUrl) format('opentype');
+				font-weight: 400;
+				font-style: normal;
+				font-display: swap;
+			}
+		</style>
 	</head>
 	<body>
 		<slot />
 	</body>
 </html>
 
-<style>
+<style is:global>
+	:root {
+		--color-cream: #fbf2e2;
+		--color-purple: #6c4fe0;
+		--color-purple-dark: #2f1d65;
+		--color-orange: #e8573d;
+		--color-peach: #f2a79c;
+		--color-heading-on-white: #33264d;
+		--color-body-on-white: #665973;
+		--font-display: 'Pontiff Wide', serif;
+		--font-body: 'Poppins', sans-serif;
+	}
+
+	* {
+		box-sizing: border-box;
+	}
+
 	html,
 	body {
 		margin: 0;
 		width: 100%;
 		height: 100%;
+	}
+
+	body {
+		font-family: var(--font-body);
+		background: var(--color-cream);
+	}
+
+	img {
+		max-width: 100%;
+		display: block;
 	}
 </style>

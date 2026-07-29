@@ -1,0 +1,54 @@
+---
+import fogliaAccentBl from '../assets/decor/foglia-accent-bl.svg';
+---
+
+<footer>
+	<img class="decor" src={fogliaAccentBl.src} alt="" aria-hidden="true" />
+	<p class="names">Rita &amp; Carlo</p>
+	<p class="tag">#OkCiSposiamo · 12.09.2026 · Padova</p>
+</footer>
+
+<style>
+	footer {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 14px;
+		background: var(--color-purple-dark);
+		overflow: clip;
+		padding: clamp(48px, 6vw, 64px) clamp(24px, 6vw, 80px);
+	}
+
+	.names {
+		margin: 0;
+		font-family: var(--font-display);
+		font-weight: 400;
+		color: var(--color-cream);
+		font-size: 30px;
+	}
+
+	.tag {
+		margin: 0;
+		font-family: var(--font-body);
+		font-weight: 500;
+		color: var(--color-orange);
+		font-size: 15px;
+	}
+
+	.decor {
+		position: absolute;
+		left: -20px;
+		bottom: 20px;
+		width: 90px;
+		pointer-events: none;
+		opacity: 0.9;
+	}
+
+	@media (max-width: 640px) {
+		.decor {
+			display: none;
+		}
+	}
+</style>

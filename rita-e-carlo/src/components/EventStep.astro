@@ -1,0 +1,285 @@
+---
+import { Image } from 'astro:assets';
+
+interface DecorImage {
+	src: ImageMetadata;
+	position: 'tl' | 'tr' | 'bl' | 'br';
+}
+
+interface Props {
+	id?: string;
+	step: string;
+	eyebrow: string;
+	title: string;
+	timeBadge: string;
+	venueName: string;
+	address: string;
+	description: string;
+	mapsHref: string;
+	photo: ImageMetadata;
+	photoAlt: string;
+	variant: 'messa' | 'festa';
+	decorImages?: DecorImage[];
+}
+
+const {
+	id,
+	step,
+	eyebrow,
+	title,
+	timeBadge,
+	venueName,
+	address,
+	description,
+	mapsHref,
+	photo,
+	photoAlt,
+	variant,
+	decorImages = [],
+} = Astro.props;
+---
+
+<section class="event" data-variant={variant} id={id}>
+	{decorImages.map((d) => <img class={`decor decor-${d.position}`} src={d.src.src} alt="" aria-hidden="true" />)}
+
+	<div class="connector">
+		<span class="line"></span>
+		<span class="dot">{step}</span>
+	</div>
+
+	<p class="eyebrow">{eyebrow}</p>
+	<h2>{title}</h2>
+	<span class="time-badge">{timeBadge}</span>
+
+	<div class="content">
+		<div class="photo">
+			<Image src={photo} alt={photoAlt} width={360} height={464} />
+		</div>
+		<div class="card">
+			<p class="venue">{venueName}</p>
+			<p class="address">{address}</p>
+			<p class="description">{description}</p>
+			<a class="maps-link" href={mapsHref} target="_blank" rel="noopener noreferrer">
+				Vedi sulla mappa →
+			</a>
+		</div>
+	</div>
+</section>
+
+<style>
+	.event {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: clamp(16px, 2.5vw, 28px);
+		overflow: clip;
+		padding: 0 clamp(24px, 6vw, 80px) clamp(72px, 10vw, 120px);
+	}
+
+	.event[data-variant='messa'] {
+		background: var(--color-cream);
+	}
+
+	.event[data-variant='festa'] {
+		background: var(--color-purple);
+	}
+
+	.connector {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.line {
+		background: var(--color-orange);
+		width: 4px;
+		height: 56px;
+	}
+
+	.dot {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 64px;
+		height: 64px;
+		border-radius: 999px;
+		background: #fff;
+		border: 3px solid var(--color-orange);
+		color: var(--color-purple);
+		font-family: var(--font-body);
+		font-weight: 600;
+		font-size: 20px;
+	}
+
+	.eyebrow {
+		margin: 0;
+		font-family: var(--font-display);
+		color: var(--color-orange);
+		font-size: 14px;
+		letter-spacing: 2px;
+	}
+
+	h2 {
+		margin: 0;
+		font-family: var(--font-display);
+		font-weight: 400;
+		text-align: center;
+		font-size: clamp(34px, 5vw, 56px);
+	}
+
+	.event[data-variant='messa'] h2 {
+		color: var(--color-purple);
+	}
+
+	.event[data-variant='festa'] h2 {
+		color: var(--color-cream);
+	}
+
+	.time-badge {
+		font-family: var(--font-body);
+		font-weight: 600;
+		font-size: clamp(16px, 1.6vw, 20px);
+		letter-spacing: 1.5px;
+		padding: 14px 30px;
+		border-radius: 999px;
+		color: var(--color-cream);
+	}
+
+	.event[data-variant='messa'] .time-badge {
+		background: var(--color-purple);
+	}
+
+	.event[data-variant='festa'] .time-badge {
+		background: var(--color-orange);
+	}
+
+	.content {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		gap: clamp(20px, 3vw, 32px);
+		padding-top: 8px;
+	}
+
+	.photo {
+		width: 180px;
+		height: 232px;
+		border-radius: 16px;
+		overflow: hidden;
+		flex-shrink: 0;
+	}
+
+	.photo :global(img) {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.card {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 8px;
+		width: min(560px, 100%);
+		padding: 32px 40px;
+		border-radius: 24px;
+	}
+
+	.event[data-variant='messa'] .card {
+		background: #fff;
+	}
+
+	.event[data-variant='festa'] .card {
+		background: var(--color-cream);
+	}
+
+	.venue {
+		margin: 0;
+		font-family: var(--font-body);
+		font-weight: 600;
+		font-size: 22px;
+		text-align: center;
+	}
+
+	.event[data-variant='messa'] .venue {
+		color: var(--color-heading-on-white);
+	}
+
+	.event[data-variant='festa'] .venue {
+		color: var(--color-purple);
+	}
+
+	.address {
+		margin: 0;
+		font-family: var(--font-body);
+		color: var(--color-body-on-white);
+		font-size: 16px;
+		text-align: center;
+	}
+
+	.description {
+		margin: 0;
+		font-family: var(--font-body);
+		color: var(--color-orange);
+		font-size: 15px;
+		text-align: center;
+		max-width: 42ch;
+	}
+
+	.maps-link {
+		margin-top: 4px;
+		font-family: var(--font-body);
+		font-weight: 600;
+		font-size: 14px;
+		color: var(--color-cream);
+		text-decoration: none;
+		padding: 10px 22px;
+		border-radius: 999px;
+	}
+
+	.event[data-variant='messa'] .maps-link {
+		background: var(--color-purple);
+	}
+
+	.event[data-variant='festa'] .maps-link {
+		background: var(--color-orange);
+	}
+
+	.decor {
+		position: absolute;
+		pointer-events: none;
+		opacity: 0.9;
+	}
+
+	.decor-tl {
+		top: -20px;
+		left: -30px;
+		width: clamp(70px, 8vw, 90px);
+	}
+
+	.decor-tr {
+		top: 60px;
+		right: -20px;
+		width: clamp(90px, 10vw, 130px);
+	}
+
+	.decor-bl {
+		bottom: 40px;
+		left: -40px;
+		width: clamp(100px, 11vw, 130px);
+	}
+
+	.decor-br {
+		bottom: 60px;
+		right: 30px;
+		width: clamp(80px, 9vw, 110px);
+	}
+
+	@media (max-width: 640px) {
+		.decor {
+			display: none;
+		}
+	}
+</style>

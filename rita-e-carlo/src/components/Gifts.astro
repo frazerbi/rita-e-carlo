@@ -1,0 +1,226 @@
+---
+import groupA from '../assets/decor/group-a.svg';
+import groupB from '../assets/decor/group-b.svg';
+import ficoAccentBr from '../assets/decor/fico-accent-br.svg';
+import ficoTlBottom from '../assets/decor/fico-tl-bottom.svg';
+---
+
+<section class="gifts" id="regali">
+	<img class="decor decor-tl-a" src={groupA.src} alt="" aria-hidden="true" />
+	<img class="decor decor-tl-b" src={groupB.src} alt="" aria-hidden="true" />
+	<img class="decor decor-br" src={ficoAccentBr.src} alt="" aria-hidden="true" />
+	<img class="decor decor-bl" src={ficoTlBottom.src} alt="" aria-hidden="true" />
+
+	<div class="connector">
+		<span class="line"></span>
+		<span class="dot">03</span>
+	</div>
+
+	<p class="eyebrow">ULTIMA TAPPA</p>
+	<h2>Un pensiero per noi</h2>
+	<p class="intro">
+		La vostra presenza è già il regalo più bello. Se desiderate comunque farci un pensiero,
+		potete scegliere tra la nostra lista nozze o un bonifico.
+	</p>
+
+	<div class="options">
+		<div class="option">
+			<p class="label">🎁 LISTA NOZZE</p>
+			<p class="name">[Nome negozio / piattaforma]</p>
+			<p class="detail">Trovate la nostra selezione di idee regalo al link dedicato.</p>
+			<a class="cta" href="#">Vai alla lista</a>
+		</div>
+		<div class="option">
+			<p class="label">💳 BONIFICO</p>
+			<div class="iban">
+				<p>IT00 X000 0000 0000 0000 0000 000</p>
+			</div>
+			<p class="detail">Intestato a: Rita [Cognome] e Carlo [Cognome]</p>
+		</div>
+	</div>
+
+	<p class="thanks">Grazie di cuore per essere parte del nostro giorno più bello.</p>
+</section>
+
+<style>
+	.gifts {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: clamp(16px, 2.5vw, 28px);
+		background: var(--color-cream);
+		overflow: clip;
+		padding: 0 clamp(24px, 6vw, 80px) clamp(72px, 10vw, 120px);
+	}
+
+	.connector {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.line {
+		background: var(--color-purple);
+		width: 4px;
+		height: 56px;
+	}
+
+	.dot {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 64px;
+		height: 64px;
+		border-radius: 999px;
+		background: #fff;
+		border: 3px solid var(--color-purple);
+		color: var(--color-purple);
+		font-family: var(--font-body);
+		font-weight: 600;
+		font-size: 20px;
+	}
+
+	.eyebrow {
+		margin: 0;
+		font-family: var(--font-display);
+		color: var(--color-orange);
+		font-size: 14px;
+		letter-spacing: 2px;
+	}
+
+	h2 {
+		margin: 0;
+		font-family: var(--font-display);
+		font-weight: 400;
+		color: var(--color-purple);
+		text-align: center;
+		font-size: clamp(30px, 4.5vw, 52px);
+	}
+
+	.intro {
+		margin: 0;
+		font-family: var(--font-body);
+		color: #4d4059;
+		font-size: 17px;
+		text-align: center;
+		max-width: 46ch;
+	}
+
+	.options {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 28px;
+		justify-content: center;
+		padding-top: 8px;
+	}
+
+	.option {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 12px;
+		width: 340px;
+		max-width: 100%;
+		padding: 32px;
+		border-radius: 24px;
+		background: #fff;
+	}
+
+	.label {
+		margin: 0;
+		font-family: var(--font-body);
+		font-weight: 600;
+		color: var(--color-orange);
+		font-size: 14px;
+		letter-spacing: 1.5px;
+	}
+
+	.name {
+		margin: 0;
+		font-family: var(--font-body);
+		font-weight: 600;
+		color: var(--color-purple);
+		font-size: 18px;
+		text-align: center;
+	}
+
+	.detail {
+		margin: 0;
+		font-family: var(--font-body);
+		color: var(--color-body-on-white);
+		font-size: 14px;
+		text-align: center;
+		max-width: 34ch;
+	}
+
+	.cta {
+		margin-top: 4px;
+		font-family: var(--font-body);
+		font-weight: 600;
+		font-size: 14px;
+		color: var(--color-cream);
+		text-decoration: none;
+		background: var(--color-orange);
+		padding: 10px 22px;
+		border-radius: 999px;
+	}
+
+	.iban {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: var(--color-cream);
+		border-radius: 14px;
+		padding: 16px 20px;
+	}
+
+	.iban p {
+		margin: 0;
+		font-family: var(--font-body);
+		font-weight: 500;
+		color: var(--color-purple);
+		font-size: 15px;
+		text-align: center;
+	}
+
+	.thanks {
+		margin: 8px 0 0;
+		font-family: var(--font-body);
+		color: var(--color-orange);
+		font-size: 15px;
+		text-align: center;
+	}
+
+	.decor {
+		position: absolute;
+		pointer-events: none;
+		opacity: 0.9;
+	}
+
+	.decor-tl-a,
+	.decor-tl-b {
+		top: 0;
+		left: 0;
+		width: 70px;
+	}
+
+	.decor-br {
+		bottom: 40px;
+		right: 20px;
+		width: clamp(90px, 10vw, 130px);
+	}
+
+	.decor-bl {
+		bottom: -40px;
+		left: -50px;
+		width: clamp(140px, 15vw, 200px);
+	}
+
+	@media (max-width: 640px) {
+		.decor {
+			display: none;
+		}
+	}
+</style>

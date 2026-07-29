@@ -1,0 +1,65 @@
+---
+import { Image } from 'astro:assets';
+
+interface Photo {
+	src: ImageMetadata;
+	alt: string;
+}
+
+interface Props {
+	photos: Photo[];
+	background?: 'cream' | 'purple';
+}
+
+const { photos, background = 'cream' } = Astro.props;
+---
+
+<section class="strip" data-bg={background}>
+	{
+		photos.map((photo) => (
+			<div class="frame">
+				<Image src={photo.src} alt={photo.alt} width={440} height={520} />
+			</div>
+		))
+	}
+</section>
+
+<style>
+	.strip {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 24px;
+		align-items: center;
+		justify-content: center;
+		padding: clamp(32px, 6vw, 56px) clamp(24px, 6vw, 80px);
+	}
+
+	.strip[data-bg='cream'] {
+		background: var(--color-cream);
+	}
+
+	.strip[data-bg='purple'] {
+		background: var(--color-purple);
+	}
+
+	.frame {
+		width: 220px;
+		height: 260px;
+		border-radius: 20px;
+		overflow: hidden;
+		flex-shrink: 0;
+	}
+
+	.frame :global(img) {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	@media (max-width: 480px) {
+		.frame {
+			width: 150px;
+			height: 180px;
+		}
+	}
+</style>
