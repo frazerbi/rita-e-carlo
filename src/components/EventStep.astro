@@ -139,19 +139,24 @@ const {
 	}
 
 	.time-badge {
+		display: inline-flex;
+		align-items: center;
+		gap: 14px;
 		font-family: var(--font-body);
 		font-weight: 600;
-		font-size: clamp(16px, 1.6vw, 20px);
-		letter-spacing: 2px;
+		font-size: clamp(14px, 1.4vw, 18px);
+		letter-spacing: 2.5px;
 		text-transform: uppercase;
-	}
-
-	.event[data-variant='messa'] .time-badge {
 		color: var(--color-orange);
 	}
 
-	.event[data-variant='festa'] .time-badge {
-		color: var(--color-cream);
+	.time-badge::before,
+	.time-badge::after {
+		content: '';
+		width: 22px;
+		height: 1px;
+		background: currentColor;
+		opacity: 0.55;
 	}
 
 	.content {
