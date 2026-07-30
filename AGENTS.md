@@ -12,6 +12,8 @@ Structure:
 
 No Tailwind — styling is plain CSS in component-scoped `<style>` blocks, using the tokens defined in `Layout.astro`.
 
+**Color contrast constraint:** `--color-orange` (#e8573d) is decorative-only (connector lines, dot borders) — it fails WCAG AA as text or as a button background with cream text on top. Use `--color-orange-dark` (#b62e16) for orange text/button-backgrounds on light (cream/white) surfaces. On purple/purple-dark surfaces, use `--color-cream` for accent text (eyebrow, time-badge, footer tag, scroll hint) — no shade of orange or peach reaches AA contrast against `--color-purple`, so don't reintroduce orange/peach text there. `--color-peach` is currently unused but still defined as a token.
+
 **Still placeholder** in `src/components/Gifts.astro`: gift registry name/link and the IBAN/account holder for the bank transfer option — replace with real details before launch.
 
 ## Development
