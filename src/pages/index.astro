@@ -18,10 +18,13 @@ import fogliaAccentBr from '../assets/decor/foglia-accent-br.svg';
 import fogliaAccentTl from '../assets/decor/foglia-accent-tl.svg';
 import foglieAccentTr from '../assets/decor/foglie-accent-tr.svg';
 import ficoAccentBl from '../assets/decor/fico-accent-bl.svg';
+
+const rsvpHref =
+	'https://docs.google.com/forms/d/e/1FAIpQLSfaYGP8WaH7-5HBf28fk2VjABSLce8YRWbGSrxE3K4NyExOGQ/viewform';
 ---
 
 <Layout>
-	<Hero />
+	<Hero rsvpHref={rsvpHref} />
 
 	<PhotoStrip
 		background="cream"
@@ -47,6 +50,7 @@ import ficoAccentBl from '../assets/decor/fico-accent-bl.svg';
 			{ src: fogliaAccentTl, position: 'tl' },
 			{ src: fogliaAccentBr, position: 'br' },
 		]}
+		rsvpHref={rsvpHref}
 	/>
 
 	<PhotoStrip
@@ -73,6 +77,7 @@ import ficoAccentBl from '../assets/decor/fico-accent-bl.svg';
 			{ src: foglieAccentTr, position: 'tr' },
 			{ src: ficoAccentBl, position: 'bl' },
 		]}
+		rsvpHref={rsvpHref}
 	/>
 
 	<PhotoStrip background="cream" photos={[{ src: ritaCarlo6Orig, alt: 'Rita e Carlo' }]} />

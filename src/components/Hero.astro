@@ -1,6 +1,12 @@
 ---
 import ficoTl from '../assets/decor/fico-tl.svg';
 import foglieBr from '../assets/decor/foglie-br.svg';
+
+interface Props {
+	rsvpHref?: string;
+}
+
+const { rsvpHref } = Astro.props;
 ---
 
 <section class="hero">
@@ -19,6 +25,12 @@ import foglieBr from '../assets/decor/foglie-br.svg';
 	<h1>Rita &amp; Carlo</h1>
 	<p class="subtitle">
 		Annunciano con gioia il loro matrimonio</p>
+
+	{rsvpHref && (
+		<a class="rsvp-cta" href={rsvpHref} target="_blank" rel="noopener noreferrer">
+			Compila il form RSVP →
+		</a>
+	)}
 </section>
 
 <style>
@@ -63,14 +75,24 @@ import foglieBr from '../assets/decor/foglie-br.svg';
 	}
 
 	.badge {
-		background: var(--color-orange-dark);
-		color: var(--color-cream);
+		display: inline-flex;
+		align-items: center;
+		gap: 14px;
 		font-family: var(--font-body);
 		font-weight: 600;
-		font-size: 15px;
-		letter-spacing: 2px;
-		padding: 10px 24px;
-		border-radius: 999px;
+		font-size: clamp(14px, 1.4vw, 18px);
+		letter-spacing: 2.5px;
+		text-transform: uppercase;
+		color: var(--color-cream);
+	}
+
+	.badge::before,
+	.badge::after {
+		content: '';
+		width: 22px;
+		height: 1px;
+		background: currentColor;
+		opacity: 0.55;
 	}
 
 	h1 {
@@ -89,6 +111,18 @@ import foglieBr from '../assets/decor/foglie-br.svg';
 		color: var(--color-cream);
 		font-size: clamp(17px, 2vw, 22px);
 		max-width: 40ch;
+	}
+
+	.rsvp-cta {
+		margin-top: 8px;
+		font-family: var(--font-body);
+		font-weight: 600;
+		font-size: 14px;
+		color: var(--color-cream);
+		text-decoration: none;
+		background: var(--color-orange-dark);
+		padding: 12px 28px;
+		border-radius: 999px;
 	}
 
 	.decor {
