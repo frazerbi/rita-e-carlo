@@ -22,21 +22,27 @@ const {
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
 		<title>{title}</title>
+
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://ritaecarlo.it/" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content="https://ritaecarlo.it/og-image.jpg" />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:locale" content="it_IT" />
+
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content="https://ritaecarlo.it/og-image.jpg" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
-			href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&display=swap"
 			rel="stylesheet"
 		/>
-		<style define:vars={{ pontiffWideUrl: `url(${pontiffWideUrl})` }}>
-			@font-face {
-				font-family: 'Pontiff Wide';
-				src: var(--pontiffWideUrl) format('opentype');
-				font-weight: 400;
-				font-style: normal;
-				font-display: swap;
-			}
-		</style>
+		<style set:html={`@font-face { font-family: 'Pontiff Wide'; src: url(${pontiffWideUrl}) format('opentype'); font-weight: 400; font-style: normal; font-display: swap; }`}></style>
 	</head>
 	<body>
 		<slot />
@@ -54,7 +60,7 @@ const {
 		--color-heading-on-white: #33264d;
 		--color-body-on-white: #665973;
 		--font-display: 'Pontiff Wide', serif;
-		--font-body: 'Poppins', sans-serif;
+		--font-body: 'Lora', serif;
 	}
 
 	* {

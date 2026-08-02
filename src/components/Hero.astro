@@ -7,15 +7,18 @@ import foglieBr from '../assets/decor/foglie-br.svg';
 	<img class="decor decor-tl" src={ficoTl.src} alt="" aria-hidden="true" />
 	<img class="decor decor-br" src={foglieBr.src} alt="" aria-hidden="true" />
 
+	<blockquote class="quote">
+		<p>
+			"Il regno dei cieli fa risultare la bellezza la certezza, la permanenza e la libertà di quel
+			rapporto visto nel suo scopo ultimo, che è la luce di Dio, cioè Cristo."
+		</p>
+		<cite>Don Luigi Giussani</cite>
+	</blockquote>
+
 	<span class="badge">12 SETTEMBRE 2026</span>
 	<h1>Rita &amp; Carlo</h1>
 	<p class="subtitle">
-		Vi invitiamo a vivere insieme a noi il giorno più importante della nostra vita.
-	</p>
-	<a class="scroll-hint" href="#programma">
-		<span class="scroll-label">SCOPRI IL PROGRAMMA</span>
-		<span class="scroll-arrow" aria-hidden="true">↓</span>
-	</a>
+		Annunciano con gioia il loro matrimonio</p>
 </section>
 
 <style>
@@ -30,6 +33,33 @@ import foglieBr from '../assets/decor/foglie-br.svg';
 		overflow: clip;
 		padding: clamp(120px, 16vw, 180px) clamp(24px, 6vw, 80px) clamp(90px, 12vw, 140px);
 		text-align: center;
+	}
+
+	.quote {
+		margin: 0 0 clamp(8px, 1.5vw, 16px);
+		max-width: 52ch;
+	}
+
+	.quote p {
+		margin: 0;
+		font-family: var(--font-body);
+		font-style: italic;
+		font-weight: 400;
+		color: var(--color-cream);
+		opacity: 0.9;
+		font-size: clamp(15px, 1.6vw, 18px);
+		line-height: 1.5;
+	}
+
+	.quote cite {
+		display: block;
+		margin-top: 10px;
+		font-family: var(--font-body);
+		font-style: normal;
+		font-weight: 600;
+		letter-spacing: 1px;
+		font-size: 13px;
+		color: var(--color-cream);
 	}
 
 	.badge {
@@ -59,27 +89,6 @@ import foglieBr from '../assets/decor/foglie-br.svg';
 		color: var(--color-cream);
 		font-size: clamp(17px, 2vw, 22px);
 		max-width: 40ch;
-	}
-
-	.scroll-hint {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 6px;
-		padding-top: 40px;
-		color: var(--color-cream);
-		text-decoration: none;
-	}
-
-	.scroll-label {
-		font-family: var(--font-body);
-		font-weight: 500;
-		font-size: 13px;
-		letter-spacing: 2px;
-	}
-
-	.scroll-arrow {
-		font-size: 20px;
 	}
 
 	.decor {

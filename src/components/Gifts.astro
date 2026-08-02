@@ -17,29 +17,40 @@ import ficoTlBottom from '../assets/decor/fico-tl-bottom.svg';
 	</div>
 
 	<p class="eyebrow">ULTIMA TAPPA</p>
-	<h2>Un pensiero per noi</h2>
+	<h2>Una nuova vita che comincia...</h2>
 	<p class="intro">
-		La vostra presenza è già il regalo più bello. Se desiderate comunque farci un pensiero,
-		potete scegliere tra la nostra lista nozze o un bonifico.
+		La vostra presenza è per noi il regalo più bello, per questo ci teniamo a festeggiare con ciascuno di voi e a condividere la nostra gioia. Nulla supera la gratitudine di esservi amici e di aver condiviso con voi parte dei nostri cammini. Il nostro <i>sì</i> è sostenuto da voi.
 	</p>
-
+	<p class="intro">P.S. Siccome Carlo è proprio un tipo veniale... ci teneva a lasciarvi almeno un IBAN, nella speranza che vi venga voglia di farci un regalino.
+	</p>
 	<div class="options">
 		<div class="option">
-			<p class="label">🎁 LISTA NOZZE</p>
-			<p class="name">[Nome negozio / piattaforma]</p>
-			<p class="detail">Trovate la nostra selezione di idee regalo al link dedicato.</p>
-			<a class="cta" href="#">Vai alla lista</a>
+			<p class="label">LISTA NOZZE</p>
+			<p class="name">La Vetrinetta</p>
+			<p class="detail">
+				Per chi vuole costruire insieme a noi la nostra casa. La lista è aperta presso il
+				negozio: chiamate per scoprire le idee regalo che abbiamo scelto.
+			</p>
+			<a class="cta" href="tel:+390498700975">Chiama 049 870 0975</a>
 		</div>
 		<div class="option">
-			<p class="label">💳 BONIFICO</p>
+			<p class="label">BONIFICO</p>
+			<p class="detail">Per chi preferisce regalarci avventure e lunghi viaggi.</p>
 			<div class="iban">
-				<p>IT00 X000 0000 0000 0000 0000 000</p>
+				<p id="iban-value">IT41D0357601601010002753961</p>
+				<button class="copy-btn" type="button" data-copy-target="iban-value" aria-label="Copia IBAN">
+					<svg class="icon-copy" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<rect x="9" y="9" width="13" height="13" rx="2"></rect>
+						<path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+					</svg>
+					<svg class="icon-check" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<polyline points="20 6 9 17 4 12"></polyline>
+					</svg>
+				</button>
 			</div>
-			<p class="detail">Intestato a: Rita [Cognome] e Carlo [Cognome]</p>
+			<p class="detail">Intestato a: Rita Andreuzza</p>
 		</div>
 	</div>
-
-	<p class="thanks">Grazie di cuore per essere parte del nostro giorno più bello.</p>
 </section>
 
 <style>
@@ -104,7 +115,7 @@ import ficoTlBottom from '../assets/decor/fico-tl-bottom.svg';
 		color: #4d4059;
 		font-size: 17px;
 		text-align: center;
-		max-width: 46ch;
+		max-width: 60ch;
 	}
 
 	.options {
@@ -171,6 +182,7 @@ import ficoTlBottom from '../assets/decor/fico-tl-bottom.svg';
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		gap: 10px;
 		background: var(--color-cream);
 		border-radius: 14px;
 		padding: 16px 20px;
@@ -183,6 +195,45 @@ import ficoTlBottom from '../assets/decor/fico-tl-bottom.svg';
 		color: var(--color-purple);
 		font-size: 15px;
 		text-align: center;
+	}
+
+	.copy-btn {
+		flex-shrink: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 30px;
+		height: 30px;
+		padding: 0;
+		border: none;
+		border-radius: 999px;
+		background: transparent;
+		color: var(--color-purple);
+		cursor: pointer;
+		transition: background 0.15s ease, color 0.15s ease;
+	}
+
+	.copy-btn:hover,
+	.copy-btn:focus-visible {
+		background: var(--color-purple);
+		color: var(--color-cream);
+	}
+
+	.copy-btn .icon-check {
+		display: none;
+	}
+
+	.copy-btn.copied .icon-copy {
+		display: none;
+	}
+
+	.copy-btn.copied .icon-check {
+		display: block;
+	}
+
+	.copy-btn.copied {
+		background: var(--color-purple);
+		color: var(--color-cream);
 	}
 
 	.thanks {
@@ -224,3 +275,27 @@ import ficoTlBottom from '../assets/decor/fico-tl-bottom.svg';
 		}
 	}
 </style>
+
+<script>
+	document.querySelectorAll<HTMLButtonElement>('.copy-btn').forEach((button) => {
+		const targetId = button.dataset.copyTarget;
+		const target = targetId ? document.getElementById(targetId) : null;
+		if (!target) return;
+
+		button.addEventListener('click', async () => {
+			try {
+				await navigator.clipboard.writeText(target.textContent?.trim() ?? '');
+			} catch {
+				return;
+			}
+			button.classList.add('copied');
+			button.setAttribute('aria-label', 'IBAN copiato');
+			window.clearTimeout(Number(button.dataset.copyTimeout));
+			const timeout = window.setTimeout(() => {
+				button.classList.remove('copied');
+				button.setAttribute('aria-label', 'Copia IBAN');
+			}, 2000);
+			button.dataset.copyTimeout = String(timeout);
+		});
+	});
+</script>

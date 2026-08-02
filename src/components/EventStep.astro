@@ -14,7 +14,6 @@ interface Props {
 	timeBadge: string;
 	venueName: string;
 	address: string;
-	description: string;
 	mapsHref: string;
 	photo: ImageMetadata;
 	photoAlt: string;
@@ -31,7 +30,6 @@ const {
 	timeBadge,
 	venueName,
 	address,
-	description,
 	mapsHref,
 	photo,
 	photoAlt,
@@ -60,7 +58,6 @@ const {
 		<div class="card">
 			<p class="venue">{venueName}</p>
 			<p class="address">{address}</p>
-			<p class="description">{description}</p>
 			<a class="maps-link" href={mapsHref} target="_blank" rel="noopener noreferrer">
 				Vedi sulla mappa →
 			</a>
@@ -169,7 +166,7 @@ const {
 
 	.content {
 		display: flex;
-		align-items: center;
+		align-items: stretch;
 		justify-content: center;
 		align-self: stretch;
 		gap: clamp(20px, 3vw, 32px);
@@ -198,6 +195,7 @@ const {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		justify-content: center;
 		gap: 8px;
 		flex: 1 1 320px;
 		max-width: 560px;
@@ -235,15 +233,6 @@ const {
 		color: var(--color-body-on-white);
 		font-size: 16px;
 		text-align: center;
-	}
-
-	.description {
-		margin: 0;
-		font-family: var(--font-body);
-		color: var(--color-orange-dark);
-		font-size: 15px;
-		text-align: center;
-		max-width: 42ch;
 	}
 
 	.maps-link {
@@ -303,6 +292,7 @@ const {
 		.content,
 		.event[data-photo-position='right'] .content {
 			flex-direction: column;
+			align-items: center;
 		}
 	}
 </style>

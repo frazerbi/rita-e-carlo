@@ -7,7 +7,10 @@ import Gifts from '../components/Gifts.astro';
 import Footer from '../components/Footer.astro';
 
 import ritaCarlo from '../img/rita-carlo.jpg';
-import ritaCarlo6 from '../img/rita-carlo-6.jpg';
+import ritaCarlo6 from '../img/rita-e-carlo-2.jpg';
+import ritaCarlo6Orig from '../img/rita-carlo-6.jpg';
+import ritaECarlo1 from '../img/rita-e-carlo-1.jpg';
+import ritaECarlo from '../img/rita-e-carlo.jpeg';
 import chiesaEremitani from '../img/chiesa-eremitani.jpg';
 import centroParrocchialeAve from '../img/centro-parrocchiale-AVE.jpg';
 
@@ -23,7 +26,7 @@ import ficoAccentBl from '../assets/decor/fico-accent-bl.svg';
 	<PhotoStrip
 		background="cream"
 		photos={[
-			{ src: ritaCarlo, alt: 'Rita e Carlo' },
+			{ src: ritaECarlo1, alt: 'Rita e Carlo' },
 			{ src: ritaCarlo6, alt: 'Rita e Carlo' },
 		]}
 	/>
@@ -37,7 +40,6 @@ import ficoAccentBl from '../assets/decor/fico-accent-bl.svg';
 		timeBadge="ORE 11:00"
 		venueName="Chiesa degli Eremitani"
 		address="Piazza Eremitani 9, 35121 Padova (PD)"
-		description="Vi aspettiamo per condividere con noi questo momento speciale, nel cuore della città."
 		mapsHref="https://maps.app.goo.gl/KbPq2gss1LsdtyXQ8"
 		photo={chiesaEremitani}
 		photoAlt="Chiesa degli Eremitani"
@@ -50,7 +52,7 @@ import ficoAccentBl from '../assets/decor/fico-accent-bl.svg';
 	<PhotoStrip
 		background="purple"
 		photos={[
-			{ src: ritaCarlo6, alt: 'Rita e Carlo' },
+			{ src: ritaECarlo, alt: 'Rita e Carlo' },
 			{ src: ritaCarlo, alt: 'Rita e Carlo' },
 		]}
 	/>
@@ -63,7 +65,6 @@ import ficoAccentBl from '../assets/decor/fico-accent-bl.svg';
 		timeBadge="A SEGUIRE, DALLE 12:30"
 		venueName={`Centro Parrocchiale "AVE"`}
 		address="Via Papa Giovanni XXIII 3, Casalserugo (PD)"
-		description="Subito dopo la messa vi aspettiamo per brindare insieme: musica, buon cibo e tanta allegria."
 		mapsHref="https://maps.app.goo.gl/L7t3KLV4ZhBLET649"
 		photo={centroParrocchialeAve}
 		photoAlt={`Centro Parrocchiale "AVE"`}
@@ -74,7 +75,7 @@ import ficoAccentBl from '../assets/decor/fico-accent-bl.svg';
 		]}
 	/>
 
-	<PhotoStrip background="cream" photos={[{ src: ritaCarlo6, alt: 'Rita e Carlo' }]} />
+	<PhotoStrip background="cream" photos={[{ src: ritaCarlo6Orig, alt: 'Rita e Carlo' }]} />
 
 	<Gifts />
 
